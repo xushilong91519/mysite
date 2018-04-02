@@ -1,0 +1,39 @@
+<!-- index.html -->
+{% extends 'mysite/base.html' %}
+{% block title %}Joker's Blog{% endblock %}
+{% block headmmessage %}
+    <h3 style='font-family:楷体;'>Article List</h3>
+    <script type="text/javascript"> 
+    <!-- 
+    function MM_jumpMenu(targ,selObj,restore){ //v3.0 
+    eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'"); 
+    if (restore) selObj.selectedIndex=0; 
+    } 
+    //--> 
+    </script>
+    <form action="" method="get"> 
+        <label>Order By</label> 
+        <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
+            <option value="/">default</option>
+            <option value="/order/number">click</option> 
+            <option value="/order/pub_date">date</option> 
+        </select> 
+    </form>
+{% endblock %}
+{% block content %}
+    {% for post in posts %}
+        <div class='panel panel-default'>
+            <div class='panel-heading'>
+                <p style='font-family:微软雅黑;font-size:16pt;font-weight:bold;'>
+                    <li><a href="{% url 'mysite:showpost' post.slug %}">{{post.title}}</a></li>
+                </p><h6 style='font-size:12pt;'>click({{post.number}})</h6>
+            </div>
+            <div class='panel-footer' style='background-color:#efefef'>
+                <p>
+                    Released date:{{ post.pub_date }}
+                </p>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}

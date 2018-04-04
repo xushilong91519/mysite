@@ -15,8 +15,8 @@
         <label>Order By</label> 
         <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
             <option value="/">default</option>
-            <option value="/order/number">click</option> 
-            <option value="/order/pub_date">date</option> 
+            <option value="{% url 'homepage_sorted' 'number' %}">click</option> 
+            <option value="{% url 'homepage_sorted' 'pub_date' %}">date</option> 
         </select> 
     </form>
 {% endblock %}

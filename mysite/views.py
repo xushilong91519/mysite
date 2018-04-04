@@ -32,9 +32,9 @@ def homepage_sorted(request,order):
     html=template.render(locals())
     return HttpResponse(html)
 
-def search(request,sentence):
+def search(request):
     template=get_template('mysite/index.html')
-    str_list=[re.compile(x) for x in sentence.split()]
+    str_list=[re.compile(x) for x in request.GET['kw'].split()]
     posts=[]
     for p in Post.objects.all():
         for tmp in str_list:

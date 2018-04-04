@@ -37,4 +37,3 @@ def search(request,sentence):
     posts=[]
     for p in Post.objects.all():
 
-

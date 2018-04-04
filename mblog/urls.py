@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from mysite.views import homepage,homepage_sorted
+from mysite.views import homepage,homepage_sorted,search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',homepage,name='homepage'),
     path('article/',include('mysite.urls')),
-    path('order/<str:order>',homepage_sorted,name='homepage_sorted')
+    path('order/<str:order>',homepage_sorted,name='homepage_sorted'),
+    path('search/<str:sentence>',search,name='search'),
 ]

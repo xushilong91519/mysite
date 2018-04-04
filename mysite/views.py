@@ -33,7 +33,14 @@ def homepage_sorted(request,order):
     return HttpResponse(html)
 
 def search(request,sentence):
-    str_list=[re.complie(x) for x in sentence.split()]
+    template=get_template('mysite/index.html')
+    str_list=[re.compile(x) for x in sentence.split()]
     posts=[]
     for p in Post.objects.all():
-
+        for tmp in str_list:
+            if re.search(tmp,p.body):
+                posts.append(p)
+                continue
+    now=datetime.now()
+    html=template.render(locals())
+    return HttpResponse(html)

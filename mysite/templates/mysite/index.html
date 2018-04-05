@@ -24,9 +24,10 @@
     {% for post in posts %}
         <div class='panel panel-default'>
             <div class='panel-heading'>
-                <p style='font-family:微软雅黑;font-size:16pt;font-weight:bold;'>
+                <p style='font-family:微软雅黑;font-size:18pt;font-weight:bold;'>
                     <li><a href="{% url 'mysite:showpost' post.slug %}">{{post.title}}</a></li>
                 </p><h6 style='font-size:12pt;'>click({{post.number}})</h6>
+		<p style='font-family:微软雅黑;font-size:9pt;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;'>{{post.body}}</p>
             </div>
             <div class='panel-footer' style='background-color:#efefef'>
                 <p>

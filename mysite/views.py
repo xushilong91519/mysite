@@ -35,12 +35,15 @@ def homepage_sorted(request,order):
 def search(request):
     template=get_template('mysite/index.html')
     str_list=[re.compile(x) for x in request.GET['kw'].split()]
-    posts=[]
+    d={}
     for p in Post.objects.all():
         for tmp in str_list:
             if re.search(tmp,p.body):
-                posts.append(p)
-                continue
+                try:
+                    d[p]+=1
+                except:
+                    d[p]=1
+    posts=sorted(d.keys(),key=lambda a:d[a],reverse=True)
     now=datetime.now()
     html=template.render(locals())
     return HttpResponse(html)

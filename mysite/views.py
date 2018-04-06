@@ -34,7 +34,7 @@ def homepage_sorted(request,order):
 
 def search(request):
     template=get_template('mysite/index.html')
-    str_list=[re.compile(x) for x in request.GET['kw'].split()]
+    str_list=[re.compile(x,re.I) for x in request.GET['kw'].split()]
     d={}
     for p in Post.objects.all():
         for tmp in str_list:
